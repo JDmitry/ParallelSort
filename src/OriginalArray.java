@@ -9,7 +9,7 @@ public class OriginalArray {
 
     public void initArray() {
         for (int i = 0; i < original.length; i++) {
-            original[i] = (int) (Math.random()*101);
+            original[i] = (int) (Math.random()*LENGTH+1);
         }
     }
 

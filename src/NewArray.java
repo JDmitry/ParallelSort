@@ -1,50 +1,47 @@
 public class NewArray {
-    private final int size = 5;
+    private  int chunckSize;
     private int arrayLegth;
-    private int[][] chunckedArray;
-    private OriginalArray originalArray;
+    private int[][] chunckArray;
 
-    public NewArray() {
-        originalArray = new OriginalArray();
-        chunckedArray = chunck(originalArray.getOriginal(), size);
+    public NewArray(OriginalArray originalArray, int chunckSize) {
+        chunckArray = creatChunck(originalArray.getOriginal(), this.chunckSize=chunckSize);
     }
 
-    public int[][] chunck(int[] arr, int size) {
-        arrayLegth = arr.length/size;
-        int[][] chunckedArray = new int[size][arrayLegth];
+    public int[][] creatChunck(int[] arr, int chunckSize) {
+        arrayLegth = arr.length/chunckSize;
+        int[][] chunckedArray = new int[arrayLegth][chunckSize];
         int count = 0;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < arr.length/size; j++){
+        for (int i = 0; i <arrayLegth; i++) {
+            for (int j = 0; j < chunckSize; j++){
                 chunckedArray[i][j] = arr[count++];
             }
         }
         return chunckedArray;
     }
 
-    public void displayTwoArrays() {
-        originalArray.displayOriginalArray();
+    public void displayNewArray() {
         System.out.println();
         System.out.println("Chuncked array: ");
         System.out.println("[ ");
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < arrayLegth; i++) {
             System.out.print("[ ");
-            for (int j = 0; j < originalArray.getOriginal().length/size ; j++){
-                System.out.print(chunckedArray[i][j] + " "); ;
+            for (int j = 0; j < chunckSize ; j++){
+                System.out.print(chunckArray[i][j] + " "); ;
             }
             System.out.print("]\n");
         }
         System.out.print("]\n\n");
     }
 
-    public int[][] getChunckedArray() {
-        return chunckedArray;
-    }
-
-    public int getSize() {
-        return size;
+    public int[][] getChunckArray() {
+        return chunckArray;
     }
 
     public int getArrayLegth() {
         return arrayLegth;
+    }
+
+    public int getChunckSize() {
+        return chunckSize;
     }
 }
