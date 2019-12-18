@@ -1,6 +1,6 @@
 public class NewArray {
     private  int chunckSize;
-    private int arrayLegth;
+    private int arrayLength;
     private int[][] chunckArray;
 
     public NewArray(OriginalArray originalArray, int chunckSize) {
@@ -8,10 +8,10 @@ public class NewArray {
     }
 
     public int[][] creatChunck(int[] arr, int chunckSize) {
-        arrayLegth = arr.length/chunckSize;
-        int[][] chunckedArray = new int[arrayLegth][chunckSize];
+        arrayLength = arr.length/chunckSize;
+        int[][] chunckedArray = new int[arrayLength][chunckSize];
         int count = 0;
-        for (int i = 0; i <arrayLegth; i++) {
+        for (int i = 0; i <arrayLength; i++) {
             for (int j = 0; j < chunckSize; j++){
                 chunckedArray[i][j] = arr[count++];
             }
@@ -23,7 +23,7 @@ public class NewArray {
         System.out.println();
         System.out.println("Chuncked array: ");
         System.out.println("[ ");
-        for (int i = 0; i < arrayLegth; i++) {
+        for (int i = 0; i < arrayLength; i++) {
             System.out.print("[ ");
             for (int j = 0; j < chunckSize ; j++){
                 System.out.print(chunckArray[i][j] + " "); ;
@@ -37,8 +37,8 @@ public class NewArray {
         return chunckArray;
     }
 
-    public int getArrayLegth() {
-        return arrayLegth;
+    public int getArrayLength() {
+        return arrayLength;
     }
 
     public int getChunckSize() {

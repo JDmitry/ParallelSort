@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.*;
 
 public class Main {
@@ -11,23 +13,20 @@ public class Main {
 
         ExecutorService service = Executors.newFixedThreadPool(5);
 
-        Future<NewArray> future = service.submit(() -> {
-            for (int i = 0; i < newArray.getArrayLegth(); i++) {
-                Arrays.sort(newArray.getChunckArray()[i]);
-            }
-            return newArray;
-        });
+        List<Callable<int[]>> call = new ArrayList<>();
+        for ( int i = 0; i < newArray.getChunckArray().length; i++) {
+            call.add(new Task(newArray.getChunckArray()[i]));
+        }
+
+        List<Future<int[]>> result = service.invokeAll(call);
 
         service.shutdown();
 
         System.out.println("Sorted array: ");
         System.out.println("[");
-        for (int i = 0; i < newArray.getArrayLegth(); i++) {
-            System.out.print("[ ");
-            for (int j = 0; j < newArray.getChunckSize(); j++){
-                System.out.print(future.get().getChunckArray()[i][j] + " ");
-            }
-            System.out.print("]\n");
+        for (int i = 0; i < newArray.getChunckArray().length; i++) {
+            System.out.print(Arrays.toString(result.get(i).get()));
+            System.out.print("\n");
         }
         System.out.println("]");
     }

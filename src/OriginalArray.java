@@ -1,5 +1,5 @@
 public class OriginalArray {
-    private static final int LENGTH = 1000;
+    private static final int LENGTH = 100;
     private int[] original;
 
     public OriginalArray () {
