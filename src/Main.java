@@ -8,14 +8,14 @@ public class Main {
         OriginalArray originalArray = new OriginalArray();
         originalArray.displayOriginalArray();
 
-        NewArray newArray = new NewArray(originalArray, 20);
-        newArray.displayNewArray();
+        ChunkedArray chunkedArray = new ChunkedArray(originalArray, 5);
+        chunkedArray.displayChunckedArray();
 
         ExecutorService service = Executors.newFixedThreadPool(5);
 
         List<Callable<int[]>> call = new ArrayList<>();
-        for ( int i = 0; i < newArray.getChunckArray().length; i++) {
-            call.add(new Task(newArray.getChunckArray()[i]));
+        for ( int i = 0; i < chunkedArray.getChunckArray().length; i++) {
+            call.add(new SortingTask(chunkedArray.getChunckArray()[i]));
         }
 
         List<Future<int[]>> result = service.invokeAll(call);
@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println("Sorted array: ");
         System.out.println("[");
-        for (int i = 0; i < newArray.getChunckArray().length; i++) {
+        for (int i = 0; i < chunkedArray.getChunckArray().length; i++) {
             System.out.print(Arrays.toString(result.get(i).get()));
             System.out.print("\n");
         }
