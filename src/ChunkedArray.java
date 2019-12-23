@@ -10,11 +10,24 @@ public class ChunkedArray {
     public int[][] creatChunck(int[] arr, int chunckSize) {
         arrayLength = (double) arr.length/chunckSize;
         int num = (int) Math.ceil(arrayLength);
-        chunckArray = new int[num][chunckSize];
+        chunckArray = new int[num][];
         int count = 0;
+        int countChunck = 0;
+        int a = num-1;
 
         for (int i = 0; i < num; i++) {
-            for (int j = 0; j < chunckSize; j++){
+            for (int j = 0; j < chunckSize; j++) {
+                if (a == i) {
+                    chunckArray[i] = new int[arr.length - countChunck];
+                    break;
+                }
+                chunckArray[i] = new int[chunckSize];
+                countChunck++;
+            }
+        }
+
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < chunckSize; j++) {
                 if (count == arr.length) {
                     break;
                 }
