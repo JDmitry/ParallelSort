@@ -8,16 +8,16 @@ public class ChunkedArray {
     }
 
     public int[][] creatChunck(int[] arr, int chunckSize) {
+        int count = 0;
+        int countChunck = 0;
         arrayLength = (double) arr.length/chunckSize;
         int num = (int) Math.ceil(arrayLength);
         chunckArray = new int[num][];
-        int count = 0;
-        int countChunck = 0;
-        int a = num-1;
+        int max = num - 1;
 
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < chunckSize; j++) {
-                if (a == i) {
+                if (max == i) {
                     chunckArray[i] = new int[arr.length - countChunck];
                     break;
                 }
@@ -43,7 +43,7 @@ public class ChunkedArray {
         System.out.println("[ ");
         for (int i = 0; i < chunckArray.length; i++) {
             System.out.print("[ ");
-            for (int j = 0; j < chunckArray[i].length ; j++){
+            for (int j = 0; j < chunckArray[i].length; j++) {
                 System.out.print(chunckArray[i][j] + " ");
             }
             System.out.print("]\n");
