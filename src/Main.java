@@ -14,8 +14,8 @@ public class Main {
         ExecutorService service = Executors.newFixedThreadPool(5);
 
         List<Callable<int[]>> call = new ArrayList<>();
-        for (int i = 0; i < chunkedArray.getChunckArray().length; i++) {
-            call.add(new SortingTask(chunkedArray.getChunckArray()[i]));
+        for (int i = 0; i < chunkedArray.getChunckedArray().length; i++) {
+            call.add(new SortingTask(chunkedArray.getChunckedArray()[i]));
         }
 
         List<Future<int[]>> result = service.invokeAll(call);
@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println("Sorted array: ");
         System.out.println("[");
-        for (int i = 0; i < chunkedArray.getChunckArray().length; i++) {
+        for (int i = 0; i < chunkedArray.getChunckedArray().length; i++) {
             System.out.print(Arrays.toString(result.get(i).get()));
             System.out.print("\n");
         }

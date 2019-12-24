@@ -1,27 +1,25 @@
 public class ChunkedArray {
-    private int chunckSize;
-    private int arrayLength;
-    private int[][] chunckArray;
+    private int[][] chunckedArray;
 
     public ChunkedArray(OriginalArray originalArray, int chunckSize) {
-        chunckArray = creatChunck(originalArray.getOriginal(), this.chunckSize = chunckSize);
+        chunckedArray = createChunck(originalArray.getOriginal(), chunckSize);
     }
 
-    public int[][] creatChunck(int[] arr, int chunckSize) {
+    public int[][] createChunck(int[] arr, int chunckSize) {
         int count = 0;
         int countChunck = 0;
         double num = (double) arr.length/chunckSize;
-        arrayLength = (int) Math.ceil(num);
-        chunckArray = new int[arrayLength][];
-        int lastChunck = arrayLength - 1;
+        int arrayLength = (int) Math.ceil(num);
+        chunckedArray = new int[arrayLength][];
+        int lastChunckSize = arrayLength - 1;
 
         for (int i = 0; i < arrayLength; i++) {
             for (int j = 0; j < chunckSize; j++) {
-                if (lastChunck == i) {
-                    chunckArray[i] = new int[arr.length - countChunck];
+                if (lastChunckSize == i) {
+                    chunckedArray[i] = new int[arr.length - countChunck];
                     break;
                 }
-                chunckArray[i] = new int[chunckSize];
+                chunckedArray[i] = new int[chunckSize];
                 countChunck++;
             }
         }
@@ -31,28 +29,28 @@ public class ChunkedArray {
                 if (count == arr.length) {
                     break;
                 }
-                chunckArray[i][j] = arr[count++];
+                chunckedArray[i][j] = arr[count++];
             }
         }
-        return chunckArray;
+        return chunckedArray;
     }
 
     public void displayChunckedArray() {
         System.out.println();
         System.out.println("Chuncked array: ");
         System.out.println("[ ");
-        for (int i = 0; i < chunckArray.length; i++) {
+        for (int i = 0; i < chunckedArray.length; i++) {
             System.out.print("[ ");
-            for (int j = 0; j < chunckArray[i].length; j++) {
-                System.out.print(chunckArray[i][j] + " ");
+            for (int j = 0; j < chunckedArray[i].length; j++) {
+                System.out.print(chunckedArray[i][j] + " ");
             }
             System.out.print("]\n");
         }
         System.out.print("]\n\n");
     }
 
-    public int[][] getChunckArray() {
-        return chunckArray;
+    public int[][] getChunckedArray() {
+        return chunckedArray;
     }
 }
 

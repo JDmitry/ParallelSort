@@ -1,5 +1,6 @@
 public class OriginalArray {
     private static final int LENGTH = 19;
+    private static final int MAX_VALUE = 50;
     private int[] original;
 
     public OriginalArray() {
@@ -9,7 +10,7 @@ public class OriginalArray {
 
     public void initArray() {
         for (int i = 0; i < original.length; i++) {
-            original[i] = (int)(Math.random() * LENGTH + 1);
+            original[i] = (int)(Math.random() * MAX_VALUE + 1);
         }
     }
 
