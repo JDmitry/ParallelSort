@@ -2,14 +2,14 @@ public class OriginalArray {
     private static final int LENGTH = 19;
     private int[] original;
 
-    public OriginalArray () {
+    public OriginalArray() {
         original = new int[LENGTH];
         initArray();
     }
 
     public void initArray() {
         for (int i = 0; i < original.length; i++) {
-            original[i] = (int) (Math.random()*LENGTH+1);
+            original[i] = (int)(Math.random() * LENGTH + 1);
         }
     }
 

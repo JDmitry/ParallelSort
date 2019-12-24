@@ -1,23 +1,23 @@
 public class ChunkedArray {
-    private  int chunckSize;
-    private double arrayLength;
+    private int chunckSize;
+    private int arrayLength;
     private int[][] chunckArray;
 
     public ChunkedArray(OriginalArray originalArray, int chunckSize) {
-        chunckArray = creatChunck(originalArray.getOriginal(), this.chunckSize=chunckSize);
+        chunckArray = creatChunck(originalArray.getOriginal(), this.chunckSize = chunckSize);
     }
 
     public int[][] creatChunck(int[] arr, int chunckSize) {
         int count = 0;
         int countChunck = 0;
-        arrayLength = (double) arr.length/chunckSize;
-        int num = (int) Math.ceil(arrayLength);
-        chunckArray = new int[num][];
-        int max = num - 1;
+        double num = (double) arr.length/chunckSize;
+        arrayLength = (int) Math.ceil(num);
+        chunckArray = new int[arrayLength][];
+        int lastChunck = arrayLength - 1;
 
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < arrayLength; i++) {
             for (int j = 0; j < chunckSize; j++) {
-                if (max == i) {
+                if (lastChunck == i) {
                     chunckArray[i] = new int[arr.length - countChunck];
                     break;
                 }
@@ -26,7 +26,7 @@ public class ChunkedArray {
             }
         }
 
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < arrayLength; i++) {
             for (int j = 0; j < chunckSize; j++) {
                 if (count == arr.length) {
                     break;

@@ -14,7 +14,7 @@ public class Main {
         ExecutorService service = Executors.newFixedThreadPool(5);
 
         List<Callable<int[]>> call = new ArrayList<>();
-        for ( int i = 0; i < chunkedArray.getChunckArray().length; i++) {
+        for (int i = 0; i < chunkedArray.getChunckArray().length; i++) {
             call.add(new SortingTask(chunkedArray.getChunckArray()[i]));
         }
 

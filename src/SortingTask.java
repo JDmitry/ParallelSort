@@ -10,7 +10,7 @@ class SortingTask implements Callable<int[]> {
     }
 
     @Override
-    public int[] call(){
+    public int[] call() {
         Arrays.sort(arr);
         return arr;
     }
