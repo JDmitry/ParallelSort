@@ -5,10 +5,10 @@ public class OriginalArray {
 
     public OriginalArray() {
         original = new int[LENGTH];
-        initArray();
+        initOriginalArray();
     }
 
-    public void initArray() {
+    public void initOriginalArray() {
         for (int i = 0; i < original.length; i++) {
             original[i] = (int)(Math.random() * MAX_VALUE + 1);
         }

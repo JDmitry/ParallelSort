@@ -1,56 +1,56 @@
 public class ChunkedArray {
-    private int[][] chunckedArray;
+    private int[][] chunkedArray;
 
-    public ChunkedArray(OriginalArray originalArray, int chunckSize) {
-        chunckedArray = createChunck(originalArray.getOriginal(), chunckSize);
+    public ChunkedArray(OriginalArray originalArray, int chunkSize) {
+        chunkedArray = createChunked(originalArray.getOriginal(), chunkSize);
     }
 
-    public int[][] createChunck(int[] arr, int chunckSize) {
+    public int[][] createChunked(int[] arr, int chunkSize) {
         int count = 0;
-        int countChunck = 0;
-        double num = (double) arr.length/chunckSize;
+        int countChunk = 0;
+        double num = (double) arr.length/chunkSize;
         int arrayLength = (int) Math.ceil(num);
-        chunckedArray = new int[arrayLength][];
-        int lastChunckSize = arrayLength - 1;
+        chunkedArray = new int[arrayLength][];
+        int lastChunkSize = arrayLength - 1;
 
         for (int i = 0; i < arrayLength; i++) {
-            for (int j = 0; j < chunckSize; j++) {
-                if (lastChunckSize == i) {
-                    chunckedArray[i] = new int[arr.length - countChunck];
+            for (int j = 0; j < chunkSize; j++) {
+                if (lastChunkSize == i) {
+                    chunkedArray[i] = new int[arr.length - countChunk];
                     break;
                 }
-                chunckedArray[i] = new int[chunckSize];
-                countChunck++;
+                chunkedArray[i] = new int[chunkSize];
+                countChunk++;
             }
         }
 
         for (int i = 0; i < arrayLength; i++) {
-            for (int j = 0; j < chunckSize; j++) {
+            for (int j = 0; j < chunkSize; j++) {
                 if (count == arr.length) {
                     break;
                 }
-                chunckedArray[i][j] = arr[count++];
+                chunkedArray[i][j] = arr[count++];
             }
         }
-        return chunckedArray;
+        return chunkedArray;
     }
 
-    public void displayChunckedArray() {
+    public void displayChunkedArray() {
         System.out.println();
-        System.out.println("Chuncked array: ");
+        System.out.println("Chunked array: ");
         System.out.println("[ ");
-        for (int i = 0; i < chunckedArray.length; i++) {
+        for (int i = 0; i < chunkedArray.length; i++) {
             System.out.print("[ ");
-            for (int j = 0; j < chunckedArray[i].length; j++) {
-                System.out.print(chunckedArray[i][j] + " ");
+            for (int j = 0; j < chunkedArray[i].length; j++) {
+                System.out.print(chunkedArray[i][j] + " ");
             }
             System.out.print("]\n");
         }
         System.out.print("]\n\n");
     }
 
-    public int[][] getChunckedArray() {
-        return chunckedArray;
+    public int[][] getChunkedArray() {
+        return chunkedArray;
     }
 }
 
