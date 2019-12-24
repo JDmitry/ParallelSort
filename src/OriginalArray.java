@@ -22,7 +22,7 @@ public class OriginalArray {
         System.out.println();
     }
 
-    public int[] getOriginal() {
+    public int[] getOriginalArray() {
         return original;
     }
 }

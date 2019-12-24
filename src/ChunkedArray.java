@@ -2,7 +2,7 @@ public class ChunkedArray {
     private int[][] chunkedArray;
 
     public ChunkedArray(OriginalArray originalArray, int chunkSize) {
-        chunkedArray = createChunked(originalArray.getOriginal(), chunkSize);
+        chunkedArray = createChunked(originalArray.getOriginalArray(), chunkSize);
     }
 
     public int[][] createChunked(int[] arr, int chunkSize) {
